@@ -1,12 +1,44 @@
-﻿<Window x:Class="WPFTestApplication.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFTestApplication"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+﻿<Window x:Class="WPFTestApplication.SwitchMapViews"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+    Width="1024" Height="768">
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <m:Map x:Name="myMap" CredentialsProvider="Lhikv3oqJQ18IwJgZQP6~Yjhb0mzcqhkQ_zMRXPaydw~Ap-Htd7I0Nm8qU1Dti6W9cmfDTE1EJ6s5coCMEvdE70yfhX1_OhD3BBP1C2hEgzX" 
+               Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Padding="5"
+               Center="55.95666,41.07345,0.0000" ZoomLevel="4.000" AnimationLevel="None" Mode="AerialWithLabels"/>
+        <StackPanel Orientation="Horizontal" Opacity="0.7" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center">
+            <Button x:Name="btnNorthAmerica" Click="ChangeMapView_Click" Tag="59.22237,39.88409,0.0000 12.0000" Margin="5">
+                <TextBlock>Вологда</TextBlock>
+            </Button>
+            <Button x:Name="btnNewYork" Click="ChangeMapView_Click" Tag="57.632881,39.886299,0.0000 12.0000" Margin="5">
+                <TextBlock>Ярославль</TextBlock>
+            </Button>
+            <Button x:Name="btnSanFrancisco" Click="ChangeMapView_Click" Tag="55.756962,37.615009,0.0000 11.0000" Margin="5">
+                <TextBlock>Москва</TextBlock>
+            </Button>
+            <Button x:Name="btnVancouver" Click="ChangeMapView_Click" Tag="58.523392,31.27009,0.0000 14.0000" Margin="5">
+                <TextBlock>Великий Новгород</TextBlock>
+            </Button>
+            <ComboBox SelectionChanged="AnimationLevel_SelectionChanged" SelectedIndex="1" Margin="10" Height="20">
+                <ComboBoxItem Content="None" />
+                <ComboBoxItem Content="Full" />
+            </ComboBox>
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Opacity="0.9" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center">
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Opacity="0.9" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center">
+            <TextBlock Text="Latitude: " Padding="5" Foreground="White"/>
+            <TextBox x:Name="txtLatitude" Text="" IsReadOnly="True" Background="LightGray"/>
+            <TextBlock Text="Longitude: " Padding="5" Foreground="White" />
+            <TextBox x:Name="txtLongitude" Text="" IsReadOnly="True" Background="LightGray"/>
+        </StackPanel>
     </Grid>
 </Window>
